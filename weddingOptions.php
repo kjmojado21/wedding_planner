@@ -24,78 +24,106 @@ include 'functions/adminFunctions.php';
                 ?>
             </div>
         </div>
-
-
-    </div>
-
-    <div class="container">
-        <div class="jumbotron w-100">
-            <div class="row">
-                <div class="col-lg-4">
-                    <form method="post">
-                        <button type="submit" name="addPlanner" class="btn btn-outline-info btn-block">Add a wedding Planner</button>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <form method="post">
-                        <button type="submit" name="addChurch" class="btn btn-outline-info btn-block">Add Church Location</button>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <form method="post">
-                        <button type="submit" name="addCater" class="btn btn-outline-info btn-block">Add a Catering Service</button>
-                    </form>
-                </div>
-            </div>
-
-            <?php 
-                if(isset($_POST['addPlanner'])){
-                    echo "<form method = 'post'>";
-                       echo "<div class ='card w-50 mx-auto mt-5'>";
-                            echo "<div class = 'card-header'>";
-                               
-                            echo "</div>";
-
-                            echo "<div class = 'card-body'>";
-                                    echo "<div class = 'form-group'>";
-                                    echo "<input type = 'text' name = 'planner_fname' class = 'form-control mt-2' placeholder ='Enter Wedding Planner Firstname'>";
-                                    echo "<input type = 'text' name = 'planner_lname' class = 'form-control mt-2' placeholder ='Enter Wedding Planner Lastname'>";
-                                    echo "<input type = 'number' name = 'contact_info' class = 'form-control mt-2' placeholder ='Enter Wedding Planner Contact Information'>";
-                                    echo "<button type = 'submit' name = 'addPlanner' class ='btn btn-outline-info mt-3'>Add Planner</button>";
-                            echo "</div>";
-
-                        echo "</div>";
-                    echo "</form>";
-
-                }
-                elseif(isset($_POST['addChurch'])){
-                    
-                }
-                elseif(isset($_POST['addCater'])){
-                    
-                }else{
-                    echo "<div class = 'alert alert-danger mt-5 text-center'>Choose from the available options!</div>";
-                }
-            
-            ?>
-
-        </button>
-
-
-
-    </div>
-
-
-
-    <div class="container-fluid">
-        <div class="row fixed-bottom">
+        <div class="row">
             <div class="col-lg-12">
-                <?php
-                include 'footer.php';
-                ?>
+                <p class="lead text-center bg-info p-5">
+                    Quick Configuration
+                </p>
             </div>
         </div>
+
+
     </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="jumbotron w-100">
+                    <p class="lead">Add new Wedding Planner</p>
+                    <hr>
+                    <form method="post">
+                        <input type="text" name="fname"  placeholder="Planner Firstname" class="form-control">
+                        <input type="text" name="lname"  placeholder="Planner Lastname" class="form-control mt-3">
+                        <input type="text" name="number" placeholder="Planner Contact Info" class="form-control mt-3">
+                        <button type="submit" name="add_planner" class="btn btn-outline-info mt-3">Add Planner</button>
+
+                    </form>
+
+                    <?php 
+                        if(isset($_POST['add_planner'])){
+                            $fname = $_POST['fname'];
+                            $lname = $_POST['lname'];
+                            $contact = $_POST['number'];
+
+                            addPlanner($fname,$lname,$contact);
+                        }
+                    
+                    ?>
+
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="jumbotron w-100">
+                    <p class="lead text-center">Add new new church</p>
+                    <hr>
+                    <form method="post">
+                        <input type="text" name="churchName"  placeholder="Church Name" class="form-control">
+                        <input type="text" name="location"  placeholder="Church Location" class="form-control mt-3">
+                        <input type="number" name="price" placeholder="Church Price" class="form-control mt-3">
+                        <button type="submit" name="add_church" class="btn btn-outline-info mt-3">Add Church</button>
+
+                    </form>
+                    <?php 
+                        if(isset($_POST['add_church'])){
+                            $churchName = $_POST['churchName'];
+                            $location = $_POST['location'];
+                            $price = $_POST['price'];
+
+                            addChurch($churchName,$location,$price);
+                        }
+                    
+                    ?>
+                    
+                    
+                    
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="jumbotron w-100">
+                    <p class="lead">Add new Catering Service</p>
+                    <hr>
+                    <form method="post">
+                        <input type="text" name="bundle_name"  placeholder="Bundle Name" class="form-control">
+                        <input type="text" name="cater_name"  placeholder="Catering Bundle" class="form-control mt-3">
+                        <input type="number" name="cater_price" placeholder="Service Price" class="form-control mt-3">
+                        <button type="submit" name="add_cater" class="btn btn-outline-info mt-3">Add Catering Service</button>
+
+                    </form>
+                    <?php 
+                        if(isset($_POST['add_cater'])){
+                            $bundle_name = $_POST['bundle_name'];
+                            $cater_name = $_POST['cater_name'];
+                            $cater_price = $_POST['cater_price'];
+
+                            addCater($bundle_name,$cater_name,$cater_price);
+
+                            
+                        }
+                    
+                    ?>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

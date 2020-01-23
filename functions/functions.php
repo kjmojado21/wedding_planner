@@ -128,3 +128,51 @@ function updateOneCivilPlan($weddingType,$caterService,$weddingDate,$planID){
     }
 
 }
+
+function getPlannerList(){
+    $conn = connect();
+    $sql = "SELECT * FROM planner_list";
+    $result = $conn->query($sql);
+
+    if($result->num_rows>0){
+        $row = array();
+        while($rows = $result->fetch_assoc()){
+            $row[] = $rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+}
+function getChurchList(){
+    $conn = connect();
+    $sql = "SELECT * FROM church_tb";
+    $result = $conn->query($sql);
+
+    if($result->num_rows>0){
+        $row = array();
+        while($rows = $result->fetch_assoc()){
+            $row[] = $rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+}
+function getCaterList(){
+    $conn = connect();
+    $sql = "SELECT * FROM cater_tb";
+    $result = $conn->query($sql);
+
+    if($result->num_rows>0){
+        $row = array();
+        while($rows = $result->fetch_assoc()){
+            $row[] = $rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+}
+
+
